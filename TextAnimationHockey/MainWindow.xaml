@@ -1,0 +1,21 @@
+﻿<Window x:Class="TextAnimationHockey.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextAnimationHockey"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800" x:Name="Field">
+    <Canvas>
+        <Ellipse x:Name="EllipseAnimation" 
+                 MinHeight="100" MinWidth="100" Canvas.Left="250" Canvas.Top="350" 
+                 Fill="Aqua" MouseLeftButtonDown="StartDrag"/>
+        
+        <Ellipse x:Name="EllipseCollision" 
+                 MinHeight="100" MinWidth="100" 
+                 Fill="Red"  Canvas.Left="250" Canvas.Top="250"
+                 Loaded="Init"/>
+        
+        
+    </Canvas>
+</Window>
