@@ -38,7 +38,7 @@ namespace TextAnimationHockey
             draggedObject.MouseMove += OnMoveDrag;
             draggedObject.LostMouseCapture += OnLostCapture;
             draggedObject.MouseUp += OnMouseUp;
-
+            
         }
 
         void OnLostCapture(object sender, MouseEventArgs e)
@@ -73,7 +73,7 @@ namespace TextAnimationHockey
             Canvas.SetTop(draggedObject, newPoint.Y);
 
 
-            Point objPosition = new Point(Canvas.GetLeft(EllipseAnimation), Canvas.GetTop(EllipseAnimation));
+            Point objPosition = new Point(Canvas.GetLeft(draggedObject), Canvas.GetTop(draggedObject));
             CheckCollision(objPosition);
         }
 
