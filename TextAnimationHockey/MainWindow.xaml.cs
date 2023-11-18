@@ -29,6 +29,10 @@ namespace TextAnimationHockey
         {
             InitializeComponent();
 
+            TestAnimationWindow1 test = new TestAnimationWindow1();
+            test.Show();
+            Close();
+
         }
 
         void StartDrag(object sender, MouseButtonEventArgs e)
@@ -85,7 +89,7 @@ namespace TextAnimationHockey
         void CheckCollision(Point objPosition)
         {
             var collisionObjectPose = new Point(Canvas.GetLeft(EllipseCollision), Canvas.GetTop(EllipseCollision));
-            double radius = new Vector((collisionObject.ActualWidth / 2), 0).Length;
+            double radius = collisionObject.ActualWidth / 2;
             double lenMouseAndCenterColObj = (objPosition - collisionObjectPose).Length;
 
             if (lenMouseAndCenterColObj - radius == 50)
