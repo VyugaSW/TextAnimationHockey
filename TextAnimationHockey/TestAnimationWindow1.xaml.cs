@@ -44,10 +44,10 @@ namespace TextAnimationHockey
             {
                 var newPoint = Mouse.GetPosition(Field);
                 mousePosition = newPoint - new Point();
-                Canvas.SetLeft(dragObj, newPoint.X - 50);
-                Canvas.SetTop(dragObj, newPoint.Y - 50);
+                Canvas.SetLeft(dragObj, newPoint.X - dragObj.ActualWidth / 2);
+                Canvas.SetTop(dragObj, newPoint.Y - dragObj.ActualHeight / 2);
 
-                CheckCollision(newPoint);
+                CheckCollision();
             }
             
         }
@@ -68,16 +68,24 @@ namespace TextAnimationHockey
             }
         }
 
-        void CheckCollision(Point objPosition)
+        int CheckCollision()
         {
-            var collisionObjectPose = new Point(Canvas.GetLeft(collisionObj), Canvas.GetTop(collisionObj));
-            double radius = collisionObj.ActualWidth / 2;
-            double lenMouseAndCenterColObj = (objPosition - collisionObjectPose).Length;
+            Rect dragObjHitBox = new Rect(Canvas.GetLeft(dragObj), Canvas.GetTop(dragObj), dragObj.ActualWidth, dragObj.ActualHeight);          
+            Rect collisionObjHitBox = new Rect(Canvas.GetLeft(collisionObj), Canvas.GetTop(collisionObj), collisionObj.ActualWidth, collisionObj.ActualHeight);
 
-            if (lenMouseAndCenterColObj - radius == 50)
+            if (dragObjHitBox.IntersectsWith(collisionObjHitBox))
             {
-                MessageBox.Show("Yes");
+                if ((collisionObj as Ellipse).Fill == Brushes.Black)
+                {
+                    (collisionObj as Ellipse).Fill = Brushes.Red;
+                    return 1;
+                }
+
+                (collisionObj as Ellipse).Fill = Brushes.Black;
+
             }
+
+            return 0;
         }
     }
 }
